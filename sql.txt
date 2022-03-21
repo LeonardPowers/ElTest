@@ -1,0 +1,6 @@
+SELECT DISTINCT ClientId FROM
+    (SELECT Count(*) AS 'DetailsCount', [ClientId]
+     FROM [dbo].[ElRequest]
+     WHERE [ModelUrl] IS NOT NULL AND [ModelUrl]<>''
+     Group by [ClientId]) AS CountUnit
+WHERE DetailsCount<=1
